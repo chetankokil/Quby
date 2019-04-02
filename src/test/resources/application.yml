@@ -1,0 +1,16 @@
+server:
+  address: localhost
+
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+abc:
+  testval: adc104b9fd4283420b0bf0d0def42c54
+

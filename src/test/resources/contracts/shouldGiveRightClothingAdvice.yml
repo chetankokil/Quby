@@ -1,0 +1,37 @@
+description: |
+  Represents a successful scenario of retrieving a clothing advice
+
+  ```
+  given:
+      Amsterdam temperature is between -10 and 40
+  when:
+      customer requests a clothing advice for Amsterdam
+  then:
+      we'll give him one of the following advice: Russian coat, US Parka, Regular Jacket, T-shirt and flip-flops, Swimming costume
+  ```
+name: ""
+request:
+  method: GET
+  url: /advice
+  queryParameters:
+    city: "Amsterdam"
+response:
+  status: 200
+  headers:
+    Content-Type: application/json;charset=UTF-8
+  body:
+    city: "Amsterdam"
+    currentTemperature: Placeholder
+    advice: "Placeholder"
+  matchers:
+    body:
+      - path: $.currentTemperature
+        type: by_regex
+        predefined: number
+      - path: $.city
+        type: by_equality
+      - path: $.advice
+        type: by_type
+      - path: $
+        type: by_command
+        value: assertValidClothingAdvice($it)
